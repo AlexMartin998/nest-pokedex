@@ -5,7 +5,7 @@
 ## Features
 
 ⚡️ Nest\
-⚡️ Docke
+⚡️ Docker
 
 ## Installation
 
