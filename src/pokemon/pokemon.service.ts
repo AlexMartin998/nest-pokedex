@@ -85,6 +85,16 @@ export class PokemonService {
     return { msg: `Pokemon with ID: '${id}' was successfully deleted` };
   }
 
+  async populateDB(pokemons: CreatePokemonDto[]) {
+    try {
+      await this.pokemonModel.deleteMany({}); // delete * from pokemons;
+
+      return await this.pokemonModel.insertMany(pokemons);
+    } catch (error) {
+      return this.handleExceptions(error);
+    }
+  }
+
   private handleExceptions(error) {
     // Lo hacemos asi para EVITAR consultar la DB para verificar si existe tanto el name y el no
     if (+error.code === 11000)

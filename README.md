@@ -5,7 +5,8 @@
 ## Features
 
 ⚡️ Nest\
-⚡️ Docker
+⚡️ Docker\
+⚡️ MongoDB and Mongoose
 
 ## Installation
 
@@ -30,6 +31,14 @@ $ pnpm run start:prod
 
 ```bash
 docker compose up --build -d
+```
+
+### Populate DB
+
+```bash
+# HTTP Get request
+
+curl http://localhost:3000/api/v1/seed
 ```
 
 ## Test
