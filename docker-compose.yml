@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  db:
+    image: mongo:5
+    restart: always
+    ports:
+      - 2717:27017
+    environment:
+      MONGODB_DATABASE: nest-pokemon
+
+    # Asi crea el dir mongo/ en mi proyecto y no necesita volumens en el root del archivo
+    volumes:
+      - ./mongo:/data/db
+# volumes:
+#   mongo_data:
