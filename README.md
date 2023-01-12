@@ -18,7 +18,17 @@ $ npm i -g @nestjs/cli
 $ pnpm install
 ```
 
-## Running the app
+### Running the DB
+
+```bash
+docker compose up --build -d
+```
+
+### .env
+
+Create `.env` file based on `.env.template`
+
+### Running the app
 
 ```bash
 # development
@@ -29,12 +39,6 @@ $ pnpm run start:dev
 
 # production mode
 $ pnpm run start:prod
-```
-
-### Run DB
-
-```bash
-docker compose up --build -d
 ```
 
 ### Populate DB
