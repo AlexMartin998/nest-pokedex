@@ -13,4 +13,17 @@ export class Pokemon extends Document {
   no: number;
 }
 
+/* const PokemonSchema = SchemaFactory.createForClass(Pokemon);
+PokemonSchema.methods.toJSON = function () {
+  const calendarEvent = this.toObject();
+  calendarEvent.id = calendarEvent._id;
+
+  delete calendarEvent._id;
+  delete calendarEvent.__v;
+
+  return calendarEvent;
+};
+
+export { PokemonSchema }; */
+
 export const PokemonSchema = SchemaFactory.createForClass(Pokemon);
