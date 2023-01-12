@@ -24,6 +24,8 @@ export class SeedService {
       },
     );
 
-    return await this.pokemonService.populateDB(pokemonsToInsert);
+    await this.pokemonService.populateDB(pokemonsToInsert);
+
+    return { ok: true, msg: 'Seed successfully executed' };
   }
 }
