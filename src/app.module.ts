@@ -1,13 +1,18 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
-import { PokemonModule } from './pokemon/pokemon.module';
 import { CommonModule } from './common/common.module';
+import { EnvConfiguration } from './config/app.config';
+import { PokemonModule } from './pokemon/pokemon.module';
 import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
+    // environment variables
+    ConfigModule.forRoot({
+      load: [EnvConfiguration],
+    }),
+
     PokemonModule,
 
     // // Servir static content
@@ -15,7 +20,7 @@ import { SeedModule } from './seed/seed.module';
     //   rootPath: join(__dirname, '..', 'public'),
     // }),
 
-    MongooseModule.forRoot('mongodb://localhost:2717/nest-pokemon'),
+    MongooseModule.forRoot(process.env.MONGODB_URI),
 
     CommonModule,
 
@@ -24,4 +29,6 @@ import { SeedModule } from './seed/seed.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {}
+}

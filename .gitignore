@@ -38,3 +38,4 @@ notes.*
 # Docker
 .dockerignore
 mongo
+.env

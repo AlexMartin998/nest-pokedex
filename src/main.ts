@@ -1,12 +1,18 @@
 import { ValidationPipe, VersioningType } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Get EnvV
+  const configService = app.get(ConfigService);
+  const PORT = configService.get<number>('port');
+
   // Prefix a la api
   app.setGlobalPrefix('api');
+  // app.setGlobalPrefix('api/v2');
 
   // Versionar la api: Crear controllers y demas para c/verison: https://docs.nestjs.com/techniques/versioning
   app.enableVersioning({
@@ -27,6 +33,9 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(3000);
+  // await app.listen(process.env.PORT);
+  // console.log(`App running on port ${process.env.PORT}`);
+  await app.listen(PORT);
+  console.log(`App running on port ${PORT}`);
 }
 bootstrap();

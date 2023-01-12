@@ -11,6 +11,10 @@
 ## Installation
 
 ```bash
+$ npm i -g @nestjs/cli
+```
+
+```bash
 $ pnpm install
 ```
 
